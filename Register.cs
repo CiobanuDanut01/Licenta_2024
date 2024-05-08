@@ -1,4 +1,3 @@
-using MySql.Data.MySqlClient;
 namespace Licenta
 {
     public partial class frmRegister : Form
@@ -7,6 +6,8 @@ namespace Licenta
         private string password;
         private bool isPassVisible;
         private bool isPassMatch;
+        public static SqlStuff sql = new SqlStuff();
+
         public frmRegister()
         {
             InitializeComponent();
@@ -41,30 +42,7 @@ namespace Licenta
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string connetionString = null;
-            MySqlConnection cnn;
-            connetionString = "server=localhost;database=Licenta;uid=root;pwd=Xploz!on726";
-            cnn = new MySqlConnection(connetionString);
-            try
-            {
-                cnn.Open();
-                string query = "INSERT INTO licenta.login(Username, Pass, Email ) VALUES ('" + this.username + "', '" + this.password + "', 'testdinVS@vs.ro')";
-                using (MySqlCommand cmd = new MySqlCommand(query, cnn))
-                {
-                    cmd.ExecuteNonQuery();
-                }
-                MessageBox.Show("Inregistrare cu succes!");
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Nu se poate deschide conexiunea ! ", "Eroare in conectarea la baza de date SQL",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                cnn.Close();
-            }
+            sql.register(this.username, this.password);
         }
 
         private void button2_Click(object sender, EventArgs e)

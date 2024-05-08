@@ -1,11 +1,13 @@
-﻿namespace Licenta
+﻿using System.ComponentModel;
+
+namespace Licenta
 {
     partial class frmRegister
     {
         /// <summary>
         ///  Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         ///  Clean up any resources being used.
@@ -28,7 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRegister));
+            ComponentResourceManager resources = new ComponentResourceManager(typeof(frmRegister));
             label1 = new Label();
             label2 = new Label();
             textUsername = new TextBox();
