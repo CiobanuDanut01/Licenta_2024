@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!--
+  <!-- 
     Microsoft ResX Schema 
-
+    
     Version 2.0
-
-    The primary goals of this format is to allow a simple XML format
-    that is mostly human readable. The generation and parsing of the
-    various data types are done through the TypeConverter classes
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
     associated with the data types.
-
+    
     Example:
-
+    
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,36 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-
-    There are any number of "resheader" rows that contain simple
+                
+    There are any number of "resheader" rows that contain simple 
     name/value pairs.
-
-    Each data row contains a name, and value. The row also contains a
-    type or mimetype. Type corresponds to a .NET class that support
-    text/value conversion through the TypeConverter architecture.
-    Classes that don't support this are serialized and stored with the
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
     mimetype set.
-
-    The mimetype is used for serialized objects, and tells the
-    ResXResourceReader how to depersist the object. This is currently not
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
     extensible. For a given mimetype the value must be set accordingly:
-
-    Note - application/x-microsoft.net.object.binary.base64 is the format
-    that the ResXResourceWriter will generate, however the reader can
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
     read any of the formats listed below.
-
+    
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with
+    value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
     
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with
+    value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array
+    value   : The object must be serialized into a byte array 
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -117,37 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnHidePass.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
-        8AAAAPAB60vuAAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAKZSURBVFhHxdbN
-        i09RGMDxM2+lLDRRCHkrMUiZjeR1jYWi/AGahZKyUyQKm5kkjaWECBtlYSMlC5SFhJW8JkOssKD4+T73
-        nnPnuc89594f+v2c+ky/85znnPvMfTn3ular9V9Fg900+cO5BTiBXp3Qafmf/OCvIJ2z6FoR+R/nluI9
-        pJMsgjaA9diDwxjHKHZjHWbYOU0mfzQUQRvBF4TxlE+4ilVhbp1yp6YIWj+uIYw1+YXrWK2PYVUDeREf
-        EBb6lyICKWTQHitbsxJwbhHeQi9gi9iLrZjtye+j+Aw9T3uMWZXjlTrOzUd4GqzojanRpJgbsHOD51hY
-        mqMmz8ML6AmWvTHlbAyEvoqfg56nvcNQkesnyOP1FDoxxV6O87iLNcWizk3DG+h52iPka/gJ+/xAijzr
-        dU/HFfzENlXELoT8mBGf5wZRd/OIJah7RPtwGROY4mMzEXJjPkLOlDvpAykT6r/aoeLCFnEJwyr/NXS+
-        NQb3RAVi7qsFt6t4YIuYo/LvQedaz+C2qEDMN/T7BeWlZcdFUYQ6eC+atu6dIfmmCsYU+zottROWiqAt
-        8/GUB1meT5Yb7IcfiBlXC0/HLR+39OVo2rY3FAX4CfIxohM0ebFsVLk9kEt3DKchd3TIbaeI48VaZtFT
-        PiHmJVaGfE3iaLeI4mxm47qTBfKXSki2vuMA+iLz5ENFX8ZYERfQU5qnO0XQuf0IC8V8hWy/csbOQN50
-        shPaPFtE9jSVjmUDAW0z7iAs9reKImKiQY22CbehF22HPiPJIiqBFNpaHMRFPITdZKQv8SMYhuwDzR+6
-        NvAnaHOxGFMT41KEvKCSRZQmdAJtCPYbs3gSKhM6gbYcYZ8YK43pTifRVuBQJW4D3RYNdk/L/QYcq0KO
-        9ZroQgAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btnShowPass.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
-        6gAAAOoB+Ss1JgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAHQSURBVFhH7dXb
-        ShVRHMfxHVoa+RCCXYp4BHsG0+ghRLxVUdIL6SlEMcprQ3yHCCmKPN6aD5Cnu0xRv1+YtVnKv71tV17N
-        Dz4wzDrNrMNMpUyZMn+ZtsK95CmmsYYD/MJVwWvvWWadDvyTPMBLfEIa7K428AL20VB68BVR5zrBl4LX
-        UR1Z3o07xyeeRT7FuU0MoRkpXj/HFqI29jWDunmIt4g60Xu0wrSgH3145A1imfsgaqs3cIwwvvkKooby
-        zdPg4zhCKjvEGMxj7CBvm3uHcF+8RtQgcdqNg0flSg8xjKg8mceNPMMFoso6huvstOdvftsPuBxO82lx
-        L+JYg6im1pTJnWxc76g81wtT6wRpG9W4vlGl5H88wDdUM4BzRBXlOXdanV43XFRHLoH16i2BY3mCbmQO
-        UeXEc27caFG5RmH8AkblySuEWUbUQH5k0jH0IfKZ8M3T4B7DXeRtc0v4bdzpi4gayo+MAxiXw/VW+rhY
-        to6orRbQhLqZwhmiTjwxnvM0qPHaad9D1OYnJvBH6cJnRB3KjelOV60N55+0Ew3FT+YIPuIS0QAR636A
-        G7fh3/HttGMS/pC+I18ip3gfq3CqrXsveVIoU6ZMg6lUrgHdIUMHo/VbhwAAAABJRU5ErkJggg==
-</value>
-  </data>
 </root>

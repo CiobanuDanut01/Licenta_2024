@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRegister));
             label1 = new Label();
             label2 = new Label();
             textUsername = new TextBox();
@@ -35,12 +36,13 @@
             label3 = new Label();
             textConPassword = new TextBox();
             label4 = new Label();
-            checkbxShowPassword = new CheckBox();
             button1 = new Button();
             button2 = new Button();
             label5 = new Label();
             label6 = new Label();
             btnCloseRegister = new Button();
+            btnHidePass = new Button();
+            btnShowPass = new Button();
             SuspendLayout();
             // 
             // label1
@@ -84,6 +86,7 @@
             textPassword.Location = new Point(37, 300);
             textPassword.Multiline = true;
             textPassword.Name = "textPassword";
+            textPassword.PasswordChar = '*';
             textPassword.Size = new Size(298, 30);
             textPassword.TabIndex = 4;
             textPassword.TextChanged += textPassword_TextChanged;
@@ -106,8 +109,10 @@
             textConPassword.Location = new Point(37, 400);
             textConPassword.Multiline = true;
             textConPassword.Name = "textConPassword";
+            textConPassword.PasswordChar = '*';
             textConPassword.Size = new Size(298, 30);
             textConPassword.TabIndex = 6;
+            textConPassword.Leave += textConPassword_Leave;
             // 
             // label4
             // 
@@ -118,19 +123,6 @@
             label4.Size = new Size(165, 28);
             label4.TabIndex = 5;
             label4.Text = "Confirmă parola";
-            // 
-            // checkbxShowPassword
-            // 
-            checkbxShowPassword.AutoSize = true;
-            checkbxShowPassword.Cursor = Cursors.Hand;
-            checkbxShowPassword.FlatStyle = FlatStyle.Flat;
-            checkbxShowPassword.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            checkbxShowPassword.Location = new Point(225, 450);
-            checkbxShowPassword.Name = "checkbxShowPassword";
-            checkbxShowPassword.Size = new Size(151, 32);
-            checkbxShowPassword.TabIndex = 7;
-            checkbxShowPassword.Text = "Arată parola";
-            checkbxShowPassword.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -145,6 +137,7 @@
             button1.TabIndex = 8;
             button1.Text = "ÎNREGISTRARE";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
@@ -158,6 +151,7 @@
             button2.TabIndex = 9;
             button2.Text = "GOLIRE CÂMPURI";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // label5
             // 
@@ -197,18 +191,47 @@
             btnCloseRegister.UseVisualStyleBackColor = false;
             btnCloseRegister.Click += btnCloseRegister_Click;
             // 
+            // btnHidePass
+            // 
+            btnHidePass.BackColor = Color.White;
+            btnHidePass.Cursor = Cursors.Hand;
+            btnHidePass.FlatStyle = FlatStyle.Flat;
+            btnHidePass.ForeColor = Color.FromArgb(116, 86, 174);
+            btnHidePass.Image = (Image)resources.GetObject("btnHidePass.Image");
+            btnHidePass.Location = new Point(300, 451);
+            btnHidePass.Name = "btnHidePass";
+            btnHidePass.Size = new Size(35, 35);
+            btnHidePass.TabIndex = 26;
+            btnHidePass.UseVisualStyleBackColor = false;
+            btnHidePass.Click += btnHidePass_Click;
+            // 
+            // btnShowPass
+            // 
+            btnShowPass.BackColor = Color.White;
+            btnShowPass.Cursor = Cursors.Hand;
+            btnShowPass.FlatStyle = FlatStyle.Flat;
+            btnShowPass.ForeColor = Color.FromArgb(116, 86, 174);
+            btnShowPass.Image = (Image)resources.GetObject("btnShowPass.Image");
+            btnShowPass.Location = new Point(300, 451);
+            btnShowPass.Name = "btnShowPass";
+            btnShowPass.Size = new Size(35, 35);
+            btnShowPass.TabIndex = 27;
+            btnShowPass.UseVisualStyleBackColor = false;
+            btnShowPass.Click += btnShowPass_Click;
+            // 
             // frmRegister
             // 
             AutoScaleDimensions = new SizeF(12F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(388, 800);
+            Controls.Add(btnShowPass);
+            Controls.Add(btnHidePass);
             Controls.Add(btnCloseRegister);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(button2);
             Controls.Add(button1);
-            Controls.Add(checkbxShowPassword);
             Controls.Add(textConPassword);
             Controls.Add(label4);
             Controls.Add(textPassword);
@@ -237,11 +260,12 @@
         private Label label3;
         private TextBox textConPassword;
         private Label label4;
-        private CheckBox checkbxShowPassword;
         private Button button1;
         private Button button2;
         private Label label5;
         private Label label6;
         private Button btnCloseRegister;
+        private Button btnHidePass;
+        private Button btnShowPass;
     }
 }
