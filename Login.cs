@@ -51,7 +51,7 @@
             sql.login(this.username, this.password);
             if (sql.isLoginSucces)
             {
-                Dashboard formDash = new Dashboard();
+                Dashboard formDash = new Dashboard(sql);
                 formDash.Show();
                 this.Hide();
             }

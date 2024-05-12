@@ -159,6 +159,7 @@
             btnSettings.Size = new Size(120, 120);
             btnSettings.TabIndex = 31;
             btnSettings.UseVisualStyleBackColor = false;
+            btnSettings.Click += btnSettings_Click;
             // 
             // label4
             // 
@@ -200,7 +201,9 @@
             Controls.Add(btnSof);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MinimumSize = new Size(1200, 450);
             Name = "Dashboard";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Meniu principal";
             FormClosed += Dashboard_FormClosed;
             ResumeLayout(false);

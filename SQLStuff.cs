@@ -13,6 +13,7 @@ namespace Licenta
         private readonly string _conn = "server=localhost;database=Licenta;uid=root;pwd=Xploz!on726";
         public List<Drivers> drivers = new List<Drivers>();
         public bool isLoginSucces;
+        public string currentUsername;
 
         public void register(string username, string password)
         {
@@ -49,6 +50,7 @@ namespace Licenta
                 {
                     cnn.Open();
                     string query = string.Empty;
+                    this.currentUsername = username;
                     if (username != null && password != null)
                     {
                         query = "SELECT * FROM licenta.login WHERE Username = '" + username.Trim() +
@@ -67,13 +69,13 @@ namespace Licenta
                         if (dt.Rows.Count > 0)
                         {
                             MessageBox.Show("Utilizator gasit!\nLogare cu succes!");
+                            this.isLoginSucces = true;
                         }
                         else
                         {
                             MessageBox.Show("Logare esuata!\nDatele nu corespund celor din tabel, incercati sa va inregistrati!", "Eroare SQL03", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-                    this.isLoginSucces = true;
 
                 }
                 catch (Exception ex)
@@ -128,5 +130,89 @@ namespace Licenta
                 }
             }
         }
+
+        public UserData getUserData()
+        {
+            UserData user = new UserData();
+            using (MySqlConnection cnn = new MySqlConnection(_conn))
+            {
+                try
+                {
+                    cnn.Open();
+                    string query = "SELECT * FROM licenta.usersdata WHERE Username = '" + this.currentUsername + "'";
+                    using (MySqlCommand cmd = new MySqlCommand(query, cnn))
+                    {
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        user.name = dt.Rows[0]["Nume_societate"].ToString();
+                        user.regCom = dt.Rows[0]["Reg_Com"].ToString();
+                        user.cif = dt.Rows[0]["CIF"].ToString();
+                        user.address = dt.Rows[0]["Adresa"].ToString();
+                        user.iban = dt.Rows[0]["IBAN"].ToString();
+                        user.bank = dt.Rows[0]["Banca"].ToString();
+                        user.code = dt.Rows[0]["Cod_Generat"].ToString();
+                        user.username = dt.Rows[0]["Username"].ToString();
+                        user.currentPass = dt.Rows[0]["Pass"].ToString();
+                    }
+                    query = "SELECT * FROM licenta.login WHERE Username = '" + this.currentUsername + "'";
+                    using (MySqlCommand cmd = new MySqlCommand(query, cnn))
+                    {
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        user.email = dt.Rows[0]["Email"].ToString();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Nu se poate deschide conexiunea ! ", "Eroare SQL01",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    cnn.Close();
+                }
+            }
+
+            return user;
+        }
+
+        public void updateUserData(UserData user, string pass, string email)
+        {
+            using (MySqlConnection cnn = new MySqlConnection(_conn))
+            {
+                try
+                {
+                    cnn.Open();
+                    string query = "UPDATE licenta.usersdata SET Nume_societate = '" + user.name + "', Reg_Com = '" +
+                                   user.regCom + "', CIF = '" + user.cif + "', Adresa = '" + user.address +
+                                   "', IBAN = '" + user.iban + "', Banca = '" + user.bank + "', Cod_Generat = '" +
+                                   user.code + "', Username = '" + user.username + "', Pass = '" + pass +
+                                   "' WHERE Cod_generat = '" + user.code + "'";
+                    using (MySqlCommand cmd = new MySqlCommand(query, cnn))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    query = "UPDATE licenta.login SET Username = '" + user.username + "', Pass = '" + pass +
+                            "', Email = '"+ email +"' WHERE Username = '" + this.currentUsername + "'";
+                    using (MySqlCommand cmd = new MySqlCommand(query, cnn))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    MessageBox.Show("Datele au fost actualizate cu succes!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Nu se poate deschide conexiunea ! ", "Eroare SQL01",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    cnn.Close();
+                }
+            }
+        }
     }
 }
+
