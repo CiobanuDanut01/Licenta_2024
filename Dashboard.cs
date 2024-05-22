@@ -16,11 +16,15 @@ namespace Licenta
 
         public DriverForm formDrivers;
         public Settings formSettings;
+        public TrucksForm formTruck;
+        public OrdersForm formOrders;
         public Dashboard(SqlStuff sql)
         {
             InitializeComponent();
             this.sql = sql;
             sql.getDrivers();
+            sql.getTrucks();
+            sql.getOrders();
         }
 
         private void btnSof_Click(object sender, EventArgs e)
@@ -40,6 +44,20 @@ namespace Licenta
             this.Hide();
             this.formSettings = new Settings(this.sql);
             formSettings.Show();
+        }
+
+        private void btnTruck_Click(object sender, EventArgs e)
+        {
+            this.formTruck = new TrucksForm(this.sql);
+            this.Hide();
+            formTruck.Show();
+        }
+
+        private void btnContracts_Click(object sender, EventArgs e)
+        {
+            this.formOrders = new OrdersForm(this.sql);
+            this.Hide();
+            formOrders.Show();
         }
     }
 }

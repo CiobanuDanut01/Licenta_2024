@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Comanda de Transport</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px
+      }
+
+      .container {
+        width: 80%;
+        margin: 0 auto
+      }
+
+      .footer,
+      .header,
+      .section {
+        margin-bottom: 20px
+      }
+
+      .header {
+        text-align: center
+      }
+
+      .header h1 {
+        margin: 0;
+        font-size: 24px;
+        text-transform: uppercase
+      }
+
+      .header p {
+        margin: 5px 0
+      }
+
+      .section h2 {
+        font-size: 20px;
+        text-transform: uppercase;
+        border-bottom: 1px solid #000;
+        padding-bottom: 5px
+      }
+
+      .section table {
+        width: 100%;
+        border-collapse: collapse
+      }
+
+      .section table,
+      .section td,
+      .section th {
+        border: 1px solid #000
+      }
+
+      .section td,
+      .section th {
+        padding: 8px;
+        text-align: left
+      }
+
+      .footer f1 {
+        text-align: left;
+        margin-top: 40px
+      }
+
+      .footer f2 {
+        text-align: right;
+        margin-top: 40px
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Comanda de transport catre</h1>
+        <h2>{numeFirma}</h2>
+        <p>Nr. {nrComanda} din {dataComanda}</p>
+      </div>
+      <div class="section">
+        <h2>Date Beneficiar (Client)</h2>
+        <p>{numeFirmaProprie}, înregistrată la Registrul Comerțului sub {regComPropriu}, având CUI {CIFPropriu} cu sediul social în {adresaProprie}</p>
+        <p>Adresă de corespondență: {adresaProprie}</p>
+      </div>
+      <div class="section">
+        <h2>Date Furnizor (Transportator)</h2>
+        <p>{numeFirma}</p>
+        <table>
+          <tr>
+            <th>Persoana care se prezintă la încărcat</th>
+            <th>Nume Prenume șofer</th>
+            <th>Număr telefon</th>
+            <th>Tip Camion</th>
+            <th>Număr auto</th>
+          </tr>
+          <tr>
+            <td>{numeSofer}</td>
+            <td>{telefonSofer}</td>
+            <td>{tipCamion}</td>
+            <td>{nrInmatriculareCamion}</td>
+            <td>{nrInmatriculareRemorca}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="section">
+        <h2>Art.1. Obiectul și durata contractului:</h2>
+        <p>Transportul de marfă conform mențiunilor de mai jos; prezenta/ul comanda/contract intră în vigoare la data semnării atât de beneficiar cât și de furnizor și încetează la data obligațiilor ambelor părți mai sus menționate.</p>
+        <table>
+          <tr>
+            <th>Data Încărcării / Interval Orar</th>
+            <td>{dataIncarcare} Ora {intervalIncarcare}</td>
+          </tr>
+          <tr>
+            <th>Adresă completă de încărcare</th>
+            <td>{adresaCompletaIncarcare}</td>
+          </tr>
+          <tr>
+            <th>Persoană de contact la încărcare Nume Prenume / Număr Telefon</th>
+            <td>{numePersoanaIncarcare} {nrTelefonIncarcare}</td>
+          </tr>
+          <tr>
+            <th>Descriere Marfă / Mod de ambalare</th>
+            <td>{descriereMarfa}</td>
+          </tr>
+          <tr>
+            <th>Greutate marfă</th>
+            <td>{greutateMarfa}</td>
+          </tr>
+          <tr>
+            <th>Data descărcării / Interval Orar</th>
+            <td>{dataDescarcare} Ora {intervalDescarcare}</td>
+          </tr>
+          <tr>
+            <th>Adresă completă la descărcare</th>
+            <td>{adresaCompletaDescarcare}</td>
+          </tr>
+          <tr>
+            <th>Persoană de contact la descărcare Nume Prenume / Număr Telefon</th>
+            <td>{numePersoanaDescarcare} {nrTelefonDescarcare}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="section">
+        <h2>Preț: {valoareComanda} {moneda} + TVA</h2>
+        <p>Metoda de plată: ordin de plată</p>
+        <p>Termen de plată: La {nrZilePlata} zile de la primirea documentelor în original</p>
+      </div>
+      <div class="section">
+        <p>In cazul in care pe durata transportului se constata de catre organele de control abilitate de lege, ca s-a depasit greutatea maxima sau dimensiunile de gabarit admise prin lege, corespunzatoare categoriei de drum pe care se efectueaza transportul, iar beneficiarul nu a anuntat in scris pentru a obtine autorizatiile necesare efectuarii transportului respectiv, beneficiarul se obliga sa suporte toate amenzile si penalitatile care se aplica transportatorului.</p>
+      </div>
+      <div class="section">
+        <h2>Termeni și condiții:</h2>
+        <ol>
+          <li>Transportul se desfasoara impreuna cu scrisoarea de transport – CMR, factura si impreuna cu orice alte documente necesare, toate in original; urmand ca acestea sa ajunga prin post/curierat la adresa beneficiarului dupa desfasurarea transportului.</li>
+          <li>Transportatorul este direct respunzator de pentru deteriorarea/ distrugerea/ pierderea/ furtul marfii pe durata efectuarii transportului.</li>
+          <li>Transportatorul (reprezentat prin sofer) are obligatia de a prelua marfa si a verifica daca aceasta corespunde calitativ si canttativ cu marfa mentionata pe avizul de insotire a marfii sau pe factura. In cazul in care transportatorul are rezerve in ceea ce privewste starea marfurilor are obligatia de a anunta acest lucru si de a mentiona in mod expres in momentul incarcarii neregurile semnalate pe CMR. In caz contrar se prezuma ca marfurile corespund din punct de vedere calitativ si cantitativ si nu prezinta niciun fel de viciu.</li>
+          <li>Neprezentarea la incarcare in data stabilita, dupa confirmarea comenzii, da drept beneficiarului de a se indrepta si a pretinde transportatorului daune interese calculate la nivelul prejudiciului produs acestia.</li>
+          <li>Renuntarea de catre beneficiar sau transportator dupa confirmarea comenzii genereaza in sarcina acestuia obligatia platii unei penalizari de 50 euro, suplimentar fata de celelalte daune pe care furnizorul / beneficiarul va dovedi ca s-au produs in urma actului renuntarii.</li>
+          <li>Este interzisa transbordarea marfii fara acordul beneficiarului si fara a avea motive intemeiate in acest sens.</li>
+          <li>Beneficiarul raspunde pentru inexactitatea datelor furnizate la momentul contractarii precum si pentru prejudiciile aduse direct sau indirect furnizorului prin incarcarea defectuoasa a marfurilor.</li>
+          <li>In cazul in care in momentul descarcarii nu se fac obiectii conducatorului auto cu</li>
+          <li>privire la calitatea si/sau cantitatea mafurilor, obiectii ce trebuiesc neaparat mentionate si pe scrisoarea de transport – CMR, orice reclamatii ulterioare nu vor fi luate in considerare iar furnizorul este exonerat de orice culpa.</li>
+          <li>Neachitarea in termenul convenit a contravalorii transportului atrage in sarcina beneficiarului penalizari de intarziere in procent de 0.5% din suma datorata pentru fiecare zi de intarziere.</li>
+          <li>Pentru orice modificare a dimensiunilor, greutatilor marfii sau modificarea locatiilor de incarcare sau de descarcare, tariful se va renegocia prin act aditional.</li>
+          <li>Neintelegereile dintre partile contractante in legatura cu clauzele si executarea prezentului contract se vor solutiona pe cale amiabila, daca acest lucru nu este posibil va fi sesizata instanta judecotareasca competenta.</li>
+        </ol>
+      </div>
+      <div class="footer">
+        <p>Beneficiar&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Furnizor</p>
+      </div>
+    </div>
+  </body>
+</html>

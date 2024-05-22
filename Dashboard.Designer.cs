@@ -94,6 +94,7 @@
             btnTruck.Size = new Size(150, 150);
             btnTruck.TabIndex = 25;
             btnTruck.UseVisualStyleBackColor = false;
+            btnTruck.Click += btnTruck_Click;
             // 
             // label2
             // 
@@ -120,6 +121,7 @@
             btnContracts.Size = new Size(150, 150);
             btnContracts.TabIndex = 27;
             btnContracts.UseVisualStyleBackColor = false;
+            btnContracts.Click += btnContracts_Click;
             // 
             // label3
             // 

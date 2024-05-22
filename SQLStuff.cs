@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,8 @@ namespace Licenta
         public List<Drivers> drivers = new List<Drivers>();
         public bool isLoginSucces;
         public string currentUsername;
+        public List<Truck> trucks = new List<Truck>();
+        public List<Order> orders = new List<Order>();
 
         public void register(string username, string password)
         {
@@ -88,6 +91,37 @@ namespace Licenta
                     cnn.Close();
                 }
             }
+        }
+
+        public string getMail(string username)
+        {
+            string email = string.Empty;
+            using (MySqlConnection cnn = new MySqlConnection(_conn))
+            {
+                try
+                {
+                    cnn.Open();
+                    string query = "SELECT Email FROM licenta.login WHERE Username = '" + username + "'";
+                    using (MySqlCommand cmd = new MySqlCommand(query, cnn))
+                    {
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        email = dt.Rows[0]["Email"].ToString();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Nu se poate deschide conexiunea ! ", "Eroare SQL01",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    cnn.Close();
+                }
+            }
+
+            return email;
         }
 
         public void getDrivers()
@@ -195,11 +229,210 @@ namespace Licenta
                         cmd.ExecuteNonQuery();
                     }
                     query = "UPDATE licenta.login SET Username = '" + user.username + "', Pass = '" + pass +
-                            "', Email = '"+ email +"' WHERE Username = '" + this.currentUsername + "'";
+                            "', Email = '" + email + "' WHERE Username = '" + this.currentUsername + "'";
                     using (MySqlCommand cmd = new MySqlCommand(query, cnn))
                     {
                         cmd.ExecuteNonQuery();
                     }
+                    MessageBox.Show("Datele au fost actualizate cu succes!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Nu se poate deschide conexiunea ! ", "Eroare SQL01",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    cnn.Close();
+                }
+            }
+        }
+
+        public void getTrucks()
+        {
+            this.trucks.Clear();
+            using (MySqlConnection cnn = new MySqlConnection(_conn))
+            {
+                try
+                {
+                    cnn.Open();
+                    string query = "select * from licenta.trucks where cod_firma in (select Cod_generat from licenta.usersdata where licenta.usersdata.username = '" + this.currentUsername + "')";
+                    using (MySqlCommand cmd = new MySqlCommand(query, cnn))
+                    {
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        foreach (DataRow row in dt.Rows)
+                        {
+                            Truck truck = new Truck();
+                            truck.plate = row["Nr_inmatriculare"].ToString();
+                            truck.brand = row["Marca"].ToString();
+                            truck.model = row["Model"].ToString();
+                            truck.year = row["An_fab"].ToString();
+                            truck.vigDate = row["Data_rovinieta"].ToString();
+                            truck.itpDate = row["Data_ITP"].ToString();
+                            truck.rcaDate = row["Data_asigurare"].ToString();
+                            truck.driverName = row["Nume_sofer"].ToString();
+                            truck.checkValues();
+                            trucks.Add(truck);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Nu se poate deschide conexiunea ! ", "Eroare SQL01",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    cnn.Close();
+                }
+            }
+        }
+
+        public void updateTrucks()
+        {
+            using (MySqlConnection cnn = new MySqlConnection(_conn))
+            {
+                try
+                {
+                    cnn.Open();
+                    string query =
+                        "DELETE FROM licenta.trucks WHERE cod_firma in (select Cod_generat from licenta.usersdata where licenta.usersdata.username = '" +
+                        this.currentUsername + "')";
+                    using (MySqlCommand cmd = new MySqlCommand(query, cnn))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    foreach (Truck truck in trucks)
+                    {
+                        query =
+                            "INSERT INTO licenta.trucks(Nr_inmatriculare, Marca, Model, An_fab, Data_rovinieta, Data_ITP, Data_asigurare, Nume_sofer, Cod_firma) VALUES ('" +
+                            truck.plate + "', '" + truck.brand + "', '" + truck.model + "', '" + truck.year + "', '" +
+                            truck.vigDate + "', '" + truck.itpDate + "', '" + truck.rcaDate + "', '" +
+                            truck.driverName +
+                            "', (select Cod_generat from licenta.usersdata where licenta.usersdata.username = '" +
+                            this.currentUsername + "'))";
+                        using (MySqlCommand cmd = new MySqlCommand(query, cnn))
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+
+                    MessageBox.Show("Datele au fost actualizate cu succes!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Nu se poate deschide conexiunea ! ", "Eroare SQL01",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    cnn.Close();
+                }
+            }
+        }
+
+        public string getCode()
+        {
+            string code = string.Empty;
+            using (MySqlConnection cnn = new MySqlConnection(_conn))
+            {
+                try
+                {
+                    cnn.Open();
+                    string query = "SELECT Cod_generat FROM licenta.usersdata WHERE Username = '" +
+                                   this.currentUsername + "'";
+                    using (MySqlCommand cmd = new MySqlCommand(query, cnn))
+                    {
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        code = dt.Rows[0]["Cod_generat"].ToString();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Nu se poate deschide conexiunea ! ", "Eroare SQL01",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    cnn.Close();
+                }
+            }
+
+            return code;
+        }
+
+        public void getOrders()
+        {
+            using (MySqlConnection cnn = new MySqlConnection(_conn))
+            {
+                try
+                {
+                    cnn.Open();
+                    string query =
+                        "SELECT * FROM licenta.comenzi WHERE Cod_firma = (SELECT Cod_generat FROM licenta.usersdata WHERE Username = '" +
+                        this.currentUsername + "')";
+                    using (MySqlCommand cmd = new MySqlCommand(query, cnn))
+                    {
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        foreach (DataRow row in dt.Rows)
+                        {
+                            Order order = new Order();
+                            order.nr = row["Nr_Crt"].ToString();
+                            order.companyName = row["Nume_societate"].ToString();
+                            order.date = row["Data_comanda"].ToString();
+                            order.value = row["Valoare"].ToString();
+                            order.checkValues();
+                            orders.Add(order);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Nu se poate deschide conexiunea ! ", "Eroare SQL01",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    cnn.Close();
+                }
+            }
+        }
+
+        public void updateOrders()
+        {
+            using (MySqlConnection cnn = new MySqlConnection(_conn))
+            {
+                try
+                {
+                    cnn.Open();
+                    string query =
+                        "DELETE FROM licenta.comenzi WHERE Cod_firma = (SELECT Cod_generat FROM licenta.usersdata WHERE Username = '" +
+                        this.currentUsername + "')";
+                    using (MySqlCommand cmd = new MySqlCommand(query, cnn))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    foreach (Order order in orders)
+                    {
+                        query =
+                            "INSERT INTO licenta.comenzi(Nr_Crt, Nume_societate, Data_comanda, Valoare, Cod_firma) VALUES ('" +
+                            order.nr + "', '" + order.companyName + "', '" + order.date + "', '" + order.value +
+                            "', (SELECT Cod_generat FROM licenta.usersdata WHERE Username = '" + this.currentUsername +
+                            "'))";
+                        using (MySqlCommand cmd = new MySqlCommand(query, cnn))
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+
                     MessageBox.Show("Datele au fost actualizate cu succes!");
                 }
                 catch (Exception ex)
