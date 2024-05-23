@@ -44,7 +44,6 @@
             label7 = new Label();
             txtDriverName = new TextBox();
             label8 = new Label();
-            btnClose = new Button();
             btnSave = new Button();
             SuspendLayout();
             // 
@@ -192,13 +191,6 @@
             label8.TabIndex = 14;
             label8.Text = "Nume sofer:";
             // 
-            // btnClose
-            // 
-            btnClose.Location = new Point(0, 0);
-            btnClose.Name = "btnClose";
-            btnClose.Size = new Size(75, 23);
-            btnClose.TabIndex = 0;
-            // 
             // btnSave
             // 
             btnSave.BackColor = Color.FromArgb(116, 86, 174);
@@ -220,7 +212,6 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(578, 564);
-            Controls.Add(btnClose);
             Controls.Add(btnSave);
             Controls.Add(txtDriverName);
             Controls.Add(label8);
@@ -263,7 +254,6 @@
         private Label label7;
         private TextBox txtDriverName;
         private Label label8;
-        private Button btnClose;
         private Button btnSave;
     }
 }

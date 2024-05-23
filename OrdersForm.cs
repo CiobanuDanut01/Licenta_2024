@@ -28,11 +28,22 @@ namespace Licenta
                     dataGridView.Columns[dataGridView.ColumnCount - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 }
             };
+
+            ToolTip toolTip1 = new ToolTip();
+
+            toolTip1.AutoPopDelay = 5000;
+            toolTip1.InitialDelay = 1000;
+            toolTip1.ReshowDelay = 500;
+            toolTip1.ShowAlways = true;
+
+            toolTip1.SetToolTip(this.btnRefresh, "Verifica daca s-au modificat fisierele si reincarca continutul tabelei.");
+
         }
 
         private void Show()
         {
             this.Size = this.big;
+            btnRefresh.Visible = true;
             btnView.Visible = true;
             btnDelete.Visible = true;
             dataGridView1.Visible = true;
@@ -42,6 +53,7 @@ namespace Licenta
         private void Hide()
         {
             this.Size = this.small;
+            btnRefresh.Visible = false;
             btnView.Visible = false;
             btnDelete.Visible = false;
             dataGridView1.Visible = false;
@@ -61,6 +73,7 @@ namespace Licenta
         private void addInitialFiles()
         {
             Order order = new Order();
+            dt.Clear();
             int count = 0;
             string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
             documentsPath = documentsPath + @"\Documente Aplicatie Management";
@@ -79,8 +92,8 @@ namespace Licenta
                     bool isOnlyNumbers = OnlyNumbers(numereText);
                     if (isOnlyNumbers)
                     {
-                        order = sql.orders.ElementAt(int.Parse(numereText) - 1);
-                        this.dt.Rows.Add(order.nr, order.companyName, order.date, order.value);
+                        order = sql.orders.Find(x => x.nr == numereText);
+                        this.dt.Rows.Add(numereText, order.companyName, order.date, order.value);
                     }
                 }
             }
@@ -160,6 +173,18 @@ namespace Licenta
                 File.Delete(filePath);
                 this.dt.Rows.RemoveAt(idx);
             }
+            acceptChanges();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            OrdersAddForm formAdd = new OrdersAddForm(sql);
+            formAdd.Show();
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            addInitialFiles();
         }
     }
 }

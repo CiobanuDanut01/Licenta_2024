@@ -25,6 +25,7 @@ namespace Licenta
             sql.getDrivers();
             sql.getTrucks();
             sql.getOrders();
+            sql.getTemplates();
         }
 
         private void btnSof_Click(object sender, EventArgs e)

@@ -16,8 +16,8 @@ namespace Licenta
         private UserData userData = new UserData();
         private string newPass = string.Empty;
         private string currentPass = string.Empty;
-        private Size small = new Size(640, 530);
-        private Size big = new Size(640, 800);
+        private Size small = new Size(640, 615);
+        private Size big = new Size(640, 885);
 
         public Settings(SqlStuff sql)
         {
@@ -89,7 +89,7 @@ namespace Licenta
                     txtboxName.Text != "" && txtboxRegCom.Text != "" && txtboxCIF.Text != "" &&
                     txtboxAdress.Text != "" && txtboxIBAN.Text != "" && txtboxBank.Text != "")
                 {
-                    if (txtboxCurrentPass.Text == userData.currentPass)
+                    if (currentPass == userData.currentPass)
                     {
                         userData.currentPass = txtboxNewPass.Text;
                         sql.updateUserData(this.userData, newPass, userData.email);
@@ -126,7 +126,6 @@ namespace Licenta
             {
                 saveChanges();
             }
-            //close the form using the inherited method
             base.Close();
         }
 
@@ -204,6 +203,13 @@ namespace Licenta
             Dashboard formDash = new Dashboard(sql);
             formDash.Show();
             this.Hide();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            TemplatesEditForm formTemplates = new TemplatesEditForm(sql);
+            base.Hide();
+            formTemplates.Show();
         }
     }
 }

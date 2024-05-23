@@ -105,7 +105,7 @@
             // 
             // btnReset
             // 
-            btnReset.BackColor = Color.Transparent;
+            btnReset.BackColor = Color.White;
             btnReset.Cursor = Cursors.Hand;
             btnReset.Image = (Image)resources.GetObject("btnReset.Image");
             btnReset.Location = new Point(1050, 18);

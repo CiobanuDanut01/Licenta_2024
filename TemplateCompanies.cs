@@ -14,7 +14,5 @@ namespace Licenta
         public string address;
         public string iban;
         public string bank;
-        public string code;
-        public string email;
     }
 }

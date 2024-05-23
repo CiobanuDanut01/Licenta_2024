@@ -17,6 +17,7 @@ namespace Licenta
         public string currentUsername;
         public List<Truck> trucks = new List<Truck>();
         public List<Order> orders = new List<Order>();
+        public List<TemplateCompanies> templates = new List<TemplateCompanies>();
 
         public void register(string username, string password)
         {
@@ -384,7 +385,7 @@ namespace Licenta
                         foreach (DataRow row in dt.Rows)
                         {
                             Order order = new Order();
-                            order.nr = row["Nr_Crt"].ToString();
+                            order.nr = row["Nr_Comanda"].ToString();
                             order.companyName = row["Nume_societate"].ToString();
                             order.date = row["Data_comanda"].ToString();
                             order.value = row["Valoare"].ToString();
@@ -423,8 +424,92 @@ namespace Licenta
                     foreach (Order order in orders)
                     {
                         query =
-                            "INSERT INTO licenta.comenzi(Nr_Crt, Nume_societate, Data_comanda, Valoare, Cod_firma) VALUES ('" +
-                            order.nr + "', '" + order.companyName + "', '" + order.date + "', '" + order.value +
+                            "INSERT INTO licenta.comenzi(Nr_comanda, Nume_societate, Data_comanda, Valoare, Cod_firma) VALUES ('" + order.nr + "', '" + order.companyName + "', '" + order.date + "', '" + order.value +
+                            "', (SELECT Cod_generat FROM licenta.usersdata WHERE Username = '" + this.currentUsername +
+                            "'))";
+                        using (MySqlCommand cmd = new MySqlCommand(query, cnn))
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+
+                    MessageBox.Show("Datele au fost actualizate cu succes!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Nu se poate deschide conexiunea ! ", "Eroare SQL01",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    cnn.Close();
+                }
+            }
+        }
+
+        public void getTemplates()
+        {
+            using (MySqlConnection cnn = new MySqlConnection(_conn))
+            {
+                try
+                {
+                    cnn.Open();
+                    string query =
+                        "SELECT * FROM licenta.sabloane WHERE Cod_firma = (SELECT Cod_generat FROM licenta.usersdata WHERE Username = '" +
+                        this.currentUsername + "')";
+                    using (MySqlCommand cmd = new MySqlCommand(query, cnn))
+                    {
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        templates.Clear();
+                        foreach (DataRow row in dt.Rows)
+                        {
+                            TemplateCompanies template = new TemplateCompanies();
+                            template.name = row["Nume_societate"].ToString();
+                            template.regCom = row["Reg_Com"].ToString();
+                            template.cif = row["CIF"].ToString();
+                            template.address = row["Adresa"].ToString();
+                            template.iban = row["IBAN"].ToString();
+                            template.bank = row["Banca"].ToString();
+                            templates.Add(template);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Nu se poate deschide conexiunea ! ", "Eroare SQL01",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    cnn.Close();
+                }
+            }
+        }
+
+        public void updateTemplates()
+        {
+            using (MySqlConnection cnn = new MySqlConnection(_conn))
+            {
+                try
+                {
+                    cnn.Open();
+                    string query =
+                        "DELETE FROM licenta.sabloane WHERE Cod_firma = (SELECT Cod_generat FROM licenta.usersdata WHERE Username = '" +
+                        this.currentUsername + "')";
+                    using (MySqlCommand cmd = new MySqlCommand(query, cnn))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    foreach (TemplateCompanies template in templates)
+                    {
+                        query =
+                            "INSERT INTO licenta.sabloane(Nume_societate, Reg_Com, CIF, Adresa, IBAN, Banca, Cod_firma) VALUES ('" +
+                            template.name + "', '" + template.regCom + "', '" + template.cif + "', '" +
+                            template.address +
+                            "', '" + template.iban + "', '" + template.bank +
                             "', (SELECT Cod_generat FROM licenta.usersdata WHERE Username = '" + this.currentUsername +
                             "'))";
                         using (MySqlCommand cmd = new MySqlCommand(query, cnn))
@@ -448,4 +533,6 @@ namespace Licenta
         }
     }
 }
+
+
 

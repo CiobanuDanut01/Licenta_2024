@@ -54,13 +54,14 @@
             btnSave = new Button();
             txtboxEmail = new TextBox();
             label10 = new Label();
+            button1 = new Button();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(12, 10);
+            label1.Location = new Point(12, 92);
             label1.Name = "label1";
             label1.Size = new Size(199, 32);
             label1.TabIndex = 0;
@@ -69,7 +70,7 @@
             // txtboxName
             // 
             txtboxName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtboxName.Location = new Point(217, 7);
+            txtboxName.Location = new Point(217, 89);
             txtboxName.Name = "txtboxName";
             txtboxName.Size = new Size(375, 39);
             txtboxName.TabIndex = 1;
@@ -78,7 +79,7 @@
             // txtboxRegCom
             // 
             txtboxRegCom.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtboxRegCom.Location = new Point(217, 67);
+            txtboxRegCom.Location = new Point(217, 149);
             txtboxRegCom.Name = "txtboxRegCom";
             txtboxRegCom.Size = new Size(375, 39);
             txtboxRegCom.TabIndex = 3;
@@ -88,7 +89,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(12, 70);
+            label2.Location = new Point(12, 152);
             label2.Name = "label2";
             label2.Size = new Size(144, 32);
             label2.TabIndex = 2;
@@ -97,7 +98,7 @@
             // txtboxCIF
             // 
             txtboxCIF.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtboxCIF.Location = new Point(217, 127);
+            txtboxCIF.Location = new Point(217, 209);
             txtboxCIF.Name = "txtboxCIF";
             txtboxCIF.Size = new Size(375, 39);
             txtboxCIF.TabIndex = 5;
@@ -107,7 +108,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(12, 130);
+            label3.Location = new Point(12, 212);
             label3.Name = "label3";
             label3.Size = new Size(56, 32);
             label3.TabIndex = 4;
@@ -116,7 +117,7 @@
             // txtboxAdress
             // 
             txtboxAdress.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtboxAdress.Location = new Point(217, 187);
+            txtboxAdress.Location = new Point(217, 269);
             txtboxAdress.Name = "txtboxAdress";
             txtboxAdress.Size = new Size(375, 39);
             txtboxAdress.TabIndex = 7;
@@ -126,7 +127,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(12, 190);
+            label4.Location = new Point(12, 272);
             label4.Name = "label4";
             label4.Size = new Size(100, 32);
             label4.TabIndex = 6;
@@ -135,7 +136,7 @@
             // txtboxIBAN
             // 
             txtboxIBAN.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtboxIBAN.Location = new Point(217, 247);
+            txtboxIBAN.Location = new Point(217, 329);
             txtboxIBAN.Name = "txtboxIBAN";
             txtboxIBAN.Size = new Size(375, 39);
             txtboxIBAN.TabIndex = 9;
@@ -145,7 +146,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(12, 250);
+            label5.Location = new Point(12, 332);
             label5.Name = "label5";
             label5.Size = new Size(80, 32);
             label5.TabIndex = 8;
@@ -154,7 +155,7 @@
             // txtboxBank
             // 
             txtboxBank.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtboxBank.Location = new Point(217, 307);
+            txtboxBank.Location = new Point(217, 389);
             txtboxBank.Name = "txtboxBank";
             txtboxBank.Size = new Size(375, 39);
             txtboxBank.TabIndex = 11;
@@ -164,7 +165,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(12, 310);
+            label6.Location = new Point(12, 392);
             label6.Name = "label6";
             label6.Size = new Size(89, 32);
             label6.TabIndex = 10;
@@ -174,7 +175,7 @@
             // 
             chkboxChangeCred.AutoSize = true;
             chkboxChangeCred.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            chkboxChangeCred.Location = new Point(45, 370);
+            chkboxChangeCred.Location = new Point(45, 452);
             chkboxChangeCred.Name = "chkboxChangeCred";
             chkboxChangeCred.Size = new Size(542, 36);
             chkboxChangeCred.TabIndex = 12;
@@ -185,7 +186,7 @@
             // txtboxUsername
             // 
             txtboxUsername.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtboxUsername.Location = new Point(217, 427);
+            txtboxUsername.Location = new Point(217, 509);
             txtboxUsername.Name = "txtboxUsername";
             txtboxUsername.Size = new Size(375, 39);
             txtboxUsername.TabIndex = 14;
@@ -195,7 +196,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(12, 430);
+            label7.Location = new Point(12, 512);
             label7.Name = "label7";
             label7.Size = new Size(202, 32);
             label7.TabIndex = 13;
@@ -204,7 +205,7 @@
             // txtboxCurrentPass
             // 
             txtboxCurrentPass.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtboxCurrentPass.Location = new Point(217, 547);
+            txtboxCurrentPass.Location = new Point(217, 629);
             txtboxCurrentPass.Name = "txtboxCurrentPass";
             txtboxCurrentPass.Size = new Size(375, 39);
             txtboxCurrentPass.TabIndex = 16;
@@ -214,7 +215,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(12, 550);
+            label8.Location = new Point(12, 632);
             label8.Name = "label8";
             label8.Size = new Size(187, 32);
             label8.TabIndex = 15;
@@ -223,7 +224,7 @@
             // txtboxNewPass
             // 
             txtboxNewPass.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtboxNewPass.Location = new Point(217, 607);
+            txtboxNewPass.Location = new Point(217, 689);
             txtboxNewPass.Name = "txtboxNewPass";
             txtboxNewPass.Size = new Size(375, 39);
             txtboxNewPass.TabIndex = 18;
@@ -233,7 +234,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.Location = new Point(12, 610);
+            label9.Location = new Point(12, 692);
             label9.Name = "label9";
             label9.Size = new Size(158, 32);
             label9.TabIndex = 17;
@@ -247,7 +248,7 @@
             btnSaveChck.FlatStyle = FlatStyle.Flat;
             btnSaveChck.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSaveChck.ForeColor = Color.White;
-            btnSaveChck.Location = new Point(125, 680);
+            btnSaveChck.Location = new Point(125, 762);
             btnSaveChck.Name = "btnSaveChck";
             btnSaveChck.Size = new Size(150, 50);
             btnSaveChck.TabIndex = 21;
@@ -262,7 +263,7 @@
             btnCloseChck.FlatStyle = FlatStyle.Flat;
             btnCloseChck.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCloseChck.ForeColor = Color.FromArgb(116, 86, 174);
-            btnCloseChck.Location = new Point(350, 680);
+            btnCloseChck.Location = new Point(350, 762);
             btnCloseChck.Name = "btnCloseChck";
             btnCloseChck.Size = new Size(150, 50);
             btnCloseChck.TabIndex = 22;
@@ -277,7 +278,7 @@
             btnClose.FlatStyle = FlatStyle.Flat;
             btnClose.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnClose.ForeColor = Color.FromArgb(116, 86, 174);
-            btnClose.Location = new Point(350, 412);
+            btnClose.Location = new Point(350, 494);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(150, 50);
             btnClose.TabIndex = 24;
@@ -293,7 +294,7 @@
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSave.ForeColor = Color.White;
-            btnSave.Location = new Point(125, 412);
+            btnSave.Location = new Point(125, 494);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(150, 50);
             btnSave.TabIndex = 23;
@@ -304,7 +305,7 @@
             // txtboxEmail
             // 
             txtboxEmail.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtboxEmail.Location = new Point(217, 485);
+            txtboxEmail.Location = new Point(217, 567);
             txtboxEmail.Name = "txtboxEmail";
             txtboxEmail.Size = new Size(375, 39);
             txtboxEmail.TabIndex = 26;
@@ -314,17 +315,34 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.Location = new Point(12, 490);
+            label10.Location = new Point(12, 572);
             label10.Name = "label10";
             label10.Size = new Size(83, 32);
             label10.TabIndex = 25;
             label10.Text = "Email:";
             // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(116, 86, 174);
+            button1.Cursor = Cursors.Hand;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(12, 12);
+            button1.Name = "button1";
+            button1.Size = new Size(580, 50);
+            button1.TabIndex = 27;
+            button1.Text = "Administrare sabloane";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // Settings
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(618, 744);
+            ClientSize = new Size(618, 832);
+            Controls.Add(button1);
             Controls.Add(txtboxEmail);
             Controls.Add(label10);
             Controls.Add(btnClose);
@@ -386,5 +404,6 @@
         private Button btnSave;
         private TextBox txtboxEmail;
         private Label label10;
+        private Button button1;
     }
 }

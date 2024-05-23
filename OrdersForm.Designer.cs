@@ -35,6 +35,7 @@
             dataGridView1 = new DataGridView();
             btnView = new Button();
             lblMissing = new Label();
+            btnRefresh = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -52,6 +53,7 @@
             btnAdd.TabIndex = 24;
             btnAdd.Text = "Adaugare";
             btnAdd.UseVisualStyleBackColor = false;
+            btnAdd.Click += btnAdd_Click;
             // 
             // btnDelete
             // 
@@ -116,17 +118,31 @@
             lblMissing.Size = new Size(0, 32);
             lblMissing.TabIndex = 28;
             // 
+            // btnRefresh
+            // 
+            btnRefresh.BackColor = Color.White;
+            btnRefresh.Cursor = Cursors.Hand;
+            btnRefresh.Image = (Image)resources.GetObject("btnRefresh.Image");
+            btnRefresh.Location = new Point(299, 27);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(45, 45);
+            btnRefresh.TabIndex = 29;
+            btnRefresh.UseVisualStyleBackColor = false;
+            btnRefresh.Click += btnRefresh_Click;
+            // 
             // OrdersForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(778, 464);
+            Controls.Add(btnRefresh);
             Controls.Add(lblMissing);
             Controls.Add(btnView);
             Controls.Add(dataGridView1);
             Controls.Add(btnDelete);
             Controls.Add(btnAdd);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MinimumSize = new Size(800, 520);
             Name = "OrdersForm";
             Text = "Comenzi";
             FormClosed += OrdersForm_FormClosed;
@@ -142,5 +158,6 @@
         private DataGridView dataGridView1;
         private Button btnView;
         private Label lblMissing;
+        private Button btnRefresh;
     }
 }
