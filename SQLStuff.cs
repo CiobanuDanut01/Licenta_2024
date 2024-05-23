@@ -18,6 +18,7 @@ namespace Licenta
         public List<Truck> trucks = new List<Truck>();
         public List<Order> orders = new List<Order>();
         public List<TemplateCompanies> templates = new List<TemplateCompanies>();
+        public List<Invoice> invoices = new List<Invoice>();
 
         public void register(string username, string password)
         {
@@ -127,6 +128,7 @@ namespace Licenta
 
         public void getDrivers()
         {
+            this.drivers.Clear();
             using (MySqlConnection cnn = new MySqlConnection(_conn))
             {
                 try
@@ -531,8 +533,91 @@ namespace Licenta
                 }
             }
         }
+
+        public void getInvoices()
+        {
+            using (MySqlConnection cnn = new MySqlConnection(_conn))
+            {
+                try
+                {
+                    cnn.Open();
+                    string query =
+                        "SELECT * FROM licenta.facturi WHERE Cod_firma = (SELECT Cod_generat FROM licenta.usersdata WHERE Username = '" +
+                        this.currentUsername + "')";
+                    using (MySqlCommand cmd = new MySqlCommand(query, cnn))
+                    {
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        invoices.Clear();
+                        foreach (DataRow row in dt.Rows)
+                        {
+                            Invoice invoice = new Invoice();
+                            invoice.nr = row["Nr_factura"].ToString();
+                            invoice.date = row["Data_factura"].ToString();
+                            invoice.companyName = row["Nume_societate"].ToString();
+                            invoice.value = row["Valoare"].ToString();
+                            invoice.valueTVA = row["Valoare_tva"].ToString();
+                            invoice.valueTotal = row["Valoare_total"].ToString();
+                            invoice.currency = row["Moneda"].ToString();
+                            invoice.checkValues();
+                            invoices.Add(invoice);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Nu se poate deschide conexiunea ! ", "Eroare SQL01",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    cnn.Close();
+                }
+            }
+        }
+
+        public void updateInvoices()
+        {
+            using (MySqlConnection cnn = new MySqlConnection(_conn))
+            {
+                try
+                {
+                    cnn.Open();
+                    string query =
+                        "DELETE FROM licenta.facturi WHERE Cod_firma = (SELECT Cod_generat FROM licenta.usersdata WHERE Username = '" +
+                        this.currentUsername + "')";
+                    using (MySqlCommand cmd = new MySqlCommand(query, cnn))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    foreach (Invoice invoice in invoices)
+                    {
+                        query =
+                            "INSERT INTO licenta.facturi(Nr_factura, Nume_societate, Data_factura, Valoare, Valoare_tva, Valoare_total, Moneda, Cod_firma) VALUES ('" +
+                            invoice.nr + "', '" + invoice.companyName + "', '" + invoice.date + "', '" + invoice.value +
+                            "', '" + invoice.valueTVA + "', '" + invoice.valueTotal + "', '" + invoice.currency +
+                            "', (SELECT Cod_generat FROM licenta.usersdata WHERE Username = '" + this.currentUsername +
+                            "'))";
+                        using (MySqlCommand cmd = new MySqlCommand(query, cnn))
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+
+                    MessageBox.Show("Datele au fost actualizate cu succes!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Nu se poate deschide conexiunea ! ", "Eroare SQL01",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    cnn.Close();
+                }
+            }
+        }
     }
 }
-
-
-

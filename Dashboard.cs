@@ -18,6 +18,7 @@ namespace Licenta
         public Settings formSettings;
         public TrucksForm formTruck;
         public OrdersForm formOrders;
+        public InvoicesForm formInvoices;
         public Dashboard(SqlStuff sql)
         {
             InitializeComponent();
@@ -26,6 +27,7 @@ namespace Licenta
             sql.getTrucks();
             sql.getOrders();
             sql.getTemplates();
+            sql.getInvoices();
         }
 
         private void btnSof_Click(object sender, EventArgs e)
@@ -59,6 +61,13 @@ namespace Licenta
             this.formOrders = new OrdersForm(this.sql);
             this.Hide();
             formOrders.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.formInvoices = new InvoicesForm(this.sql);
+            this.Hide();
+            formInvoices.Show();
         }
     }
 }

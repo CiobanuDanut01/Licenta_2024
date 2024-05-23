@@ -36,5 +36,33 @@ namespace Licenta
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        public void sendMail(string to, string subject, string body, string attachment)
+        {
+            try
+            {
+                MailMessage message = new MailMessage();
+                SmtpClient smtp = new SmtpClient();
+
+                message.From = new MailAddress("noreply@licenta.com");
+                message.To.Add(new MailAddress(to));
+                message.Subject = subject;
+                message.Body = body;
+                message.Attachments.Add(new Attachment(attachment));
+
+                smtp.Port = 587;
+                smtp.Host = "smtp.gmail.com";
+                smtp.EnableSsl = true;
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new NetworkCredential("ciobanudanut01@gmail.com", "gyns seet nmei cecu ");
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtp.Send(message);
+            }
+            catch (Exception ex)
+            { 
+                MessageBox.Show("Eroare la trimiterea emailului ! ", "Eroare MAIL01",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

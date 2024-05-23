@@ -72,14 +72,20 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AllowUserToResizeColumns = false;
+            dataGridView1.AllowUserToResizeRows = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             dataGridView1.BackgroundColor = Color.MediumPurple;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Dock = DockStyle.Bottom;
+            dataGridView1.EditMode = DataGridViewEditMode.EditOnF2;
             dataGridView1.GridColor = Color.Thistle;
             dataGridView1.Location = new Point(0, 99);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.Thistle;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -144,6 +150,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(800, 520);
             Name = "OrdersForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Comenzi";
             FormClosed += OrdersForm_FormClosed;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

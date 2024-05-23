@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Factura</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid #000;
+      padding: 8px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .container {
+      width: 1000px;
+      margin: 0 auto;
+      border: 1px solid #000;
+      padding: 20px;
+    }
+
+    .header > div {
+      width: 45%;
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .header h2 {
+      margin: 0;
+    }
+
+    .footer div {
+      margin-top: 20px;
+    }
+
+    .footer div span {
+      display: inline-block;
+      width: 30%;
+    }
+
+    .footer div .signature {
+      border-bottom: 1px solid #000;
+      width: 40%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div>
+        <h2>Client:</h2>
+        <p>{numeFirma}</p>
+        <p>Reg. com.: {regComFirma}</p>
+        <p>CIF: {cifFirma}</p>
+        <p>Adresa: {adresaFirma}</p>
+        <p>IBAN: {ibanFirma}</p>
+        <p>Banca: {numeBancaFirma}</p>
+      </div>
+      <div>
+        <h2>Furnizor:</h2>
+        <p>{numeFirmaProprie}</p>
+        <p>Reg. com.: {regComFirmaProprie}</p>
+        <p>CIF: {cifFirmaProprie}</p>
+        <p>Adresa: {adresaFirmaProprie}</p>
+        <p>IBAN: {ibanFirmaProprie}</p>
+        <p>Banca: {numeBancaFirmaProprie}</p>
+        <p>Email: {mailFirmaProprie}</p>
+      </div>
+    </div>
+    <br><br><br><br><br><br><br><br>
+    <h1 style="text-align: center;">FACTURA</h1>
+    <div class="info">
+      <table>
+        <tr>
+          <th>Seria si numar</th>
+          <th>Data (zi/luna/an)</th>
+          <th>Cota TVA</th>
+          <th>TVA la incasare</th>
+        </tr>
+        <tr>
+          <td>{serieNumarFactura}</td>
+          <td>{dataFactura}</td>
+          <td>{cotaTva}</td>
+          <td>DA</td>
+        </tr>
+      </table>
+    </div>
+    <br><br><br>
+    <div class="info">
+      <table>
+        <thead>
+          <tr>
+            <th>Nr. crt</th>
+            <th>Denumirea produselor sau a serviciilor</th>
+            <th>U.M.</th>
+            <th>Cant.</th>
+            <th>Pret unitar (fara TVA) -Lei-</th>
+            <th>Valoarea -Lei-</th>
+            <th>Valoarea TVA -Lei-</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>{titluProdusFactura} <br>{detaliiProdusFactura}</td>
+            <td>{unitMas}</td>
+            <td>{cantitate}</td>
+            <td>{pretUnitar}</td>
+            <td>{pretFaraTva}</td>
+            <td>{valoareTva}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br><br><br>
+    <div class="totals">
+      <table>
+        <tr>
+          <th>Se achita cu</th>
+          <td>OP</td>
+        </tr>
+        <tr>
+          <th>Total plata</th>
+          <td>{pretTotal} {moneda}</td>
+        </tr>
+        <tr>
+          <th>Valoare TVA</th>
+          <td>{valoareTva} {moneda}</td>
+        </tr>
+        <tr>
+          <th>Total fara TVA</th>
+          <td>{pretFaraTva} {moneda}</td>
+        </tr>
+      </table>
+    </div>
+    <br><br><br>
+    <div class="footer">
+      <div>
+        <span>Semnatura de primire:</span>
+        <div class="signature"></div>
+      </div>
+    </div>
+    <br><br>
+    <div>
+      <div>
+        <span>Mijloc transport: {nrAuto}</span>
+      </div>
+      <br>
+      <div>
+        <span>Termen plata: {dataPlata}</span>
+      </div>
+      <br><br>
+      <div>
+        <span>Factura este valabila fara semnatura si stampila, conform art. 319 alin. 29 din legea 227/2015.</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

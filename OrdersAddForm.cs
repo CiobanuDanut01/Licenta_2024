@@ -294,14 +294,16 @@ namespace Licenta
 
         private bool isAllEmpty()
         {
-            if (txtFirma.Text == "" && txtRegCom.Text == "" && txtCif.Text == "" && txtAdress.Text == "" &&
-                txtIban.Text == "" && txtBank.Text == "" && txtLoadHour.Text == "" &&
-                txtLoadAdress.Text == "" && txtLoadPers.Text == "" && txtLoadPhone.Text == "" &&
-                txtUnloadHour.Text == "" && txtUnloadAdress.Text == "" &&
-                txtUnloadPers.Text == "" && txtUnloadPhone.Text == "" && txtValue.Text == "" &&
-                txtCurrency.Text == "" && txtCargoDesc.Text == "" && txtDays.Text == "" &&
-                txtWeight.Text == "" && txtDriverName.Text == "" && txtDriverPhone.Text == "" &&
-                txtTruckType.Text == "" && txtTruckPlate.Text == "" && isNumeric(txtValue.Text))
+            if (txtFirma.Text == "" || txtRegCom.Text == "" || txtCif.Text == "" || txtAdress.Text == "" ||
+                txtIban.Text == "" || txtBank.Text == "" || txtLoadHour.Text == "" ||
+                txtLoadAdress.Text == "" | txtLoadPers.Text == "" || txtLoadPhone.Text == "" ||
+                txtUnloadHour.Text == "" || txtUnloadAdress.Text == "" ||
+                txtUnloadPers.Text == "" || txtUnloadPhone.Text == "" || txtValue.Text == "" ||
+                txtCurrency.Text == "" || txtCargoDesc.Text == "" || txtDays.Text == "" ||
+                txtWeight.Text == "" || txtDriverName.Text == "" || txtDriverPhone.Text == "" ||
+                txtTruckType.Text == "" || txtTruckPlate.Text == "" || !isNumeric(txtValue.Text) ||
+                !isNumeric(txtLoadPhone.Text) || !isNumeric(txtUnloadPhone.Text) || !isNumeric(txtWeight.Text) ||
+                !isNumeric(txtDays.Text))
             {
                 return true;
             }
@@ -370,7 +372,8 @@ namespace Licenta
         {
             if (isAllEmpty())
             {
-                MessageBox.Show("Completati toate campurile sau verificati ca valoarea comenzii sa contina doar cifre!", "Eroare", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Completati toate campurile sau verificati ca valoarea numerice* sa contina doar cifre!" +
+                                "\n * -> numere de telefon, zilele de plata, greutatea, pretul", "Eroare", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {

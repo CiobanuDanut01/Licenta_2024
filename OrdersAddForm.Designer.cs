@@ -801,6 +801,7 @@
             MaximumSize = new Size(1700, 1185);
             MinimumSize = new Size(1700, 1185);
             Name = "OrdersAddForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Adaugare comanda";
             FormClosed += OrdersAddForm_FormClosed;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

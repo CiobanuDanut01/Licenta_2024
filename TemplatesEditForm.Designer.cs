@@ -235,6 +235,7 @@
             Controls.Add(label1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "TemplatesEditForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Administrare Sabloane";
             FormClosed += TemplatesEditForm_FormClosed;
             ResumeLayout(false);

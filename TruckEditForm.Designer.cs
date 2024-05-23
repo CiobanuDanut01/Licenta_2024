@@ -231,6 +231,7 @@
             Controls.Add(label1);
             MinimumSize = new Size(600, 620);
             Name = "TruckEditForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Editare camion";
             ResumeLayout(false);
             PerformLayout();

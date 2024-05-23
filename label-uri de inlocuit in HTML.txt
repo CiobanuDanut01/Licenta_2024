@@ -1,27 +1,27 @@
     {numeFirma}
-    {nrComanda}
-    {dataComanda}
+    {regComFirma}
+    {cifFirma}
+    {adresaFirma}
+    {ibanFirma}
+    {numeBancaFirma}
     {numeFirmaProprie}
-    {regComPropriu}
-    {CIFPropriu}
-    {adresaProprie}
-    {numeSofer}
-    {telefonSofer}
-    {tipCamion}
-    {nrInmatriculareCamion}
-    {nrInmatriculareRemorca}
-    {dataIncarcare}
-    {intervalIncarcare}
-    {adresaCompletaIncarcare}
-    {numePersoanaIncarcare}
-    {nrTelefonIncarcare}
-    {descriereMarfa}
-    {greutateMarfa}
-    {dataDescarcare}
-    {intervalDescarcare}
-    {adresaCompletaDescarcare}
-    {numePersoanaDescarcare}
-    {nrTelefonDescarcare}
-    {valoareComanda}
+    {regComFirmaProprie}
+    {cifFirmaProprie}
+    {adresaFirmaProprie}
+    {ibanFirmaProprie}
+    {numeBancaFirmaProprie}
+    {mailFirmaProprie}
+    {serieNumarFactura}
+    {dataFactura}
+    {titluProdusFactura}
+    {detaliiProdusFactura}
+    {unitMas}
+    {cantitate}
+    {pretUnitar}
+    {pretFaraTva}
+    {valoareTva}
+    {pretTotal}
     {moneda}
-    {nrZilePlata}
+    {nrAuto}
+    {dataPlata}
+{cotaTva}
